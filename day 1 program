@@ -1,0 +1,394 @@
+                                                                            DAY 1
+                                                                                                    roshan.j,192125065,r program,ita0443
+BASIC OP ERATIONS IN R 
+SET 1: 
+#arthematic 
+v1=c(1,2,3) 
+v2=c(2,3,4) 
+v1+v2 
+v2-v1 
+v1*v2 
+v2/v1 
+#class/typeof 
+print(class(v1)) 
+print(typeof(v1)) 
+v3<-c("qwer","erty","uiop") 
+print(class(v3)) 
+v4<-c(6.5,5.5,7.5) 
+print(class(v4)) 
+print(typeof(v4)) 
+b<-TRUE 
+print(class(b)) 
+a<-c(3i,9+4i,34i) 
+print(class(a)) 
+#string 
+paste("Hello, World!") 
+#area of rectangle 
+l=16 
+b=12 
+paste("Area of rectangle is:") 
+l*b 
+#given program output 
+name<-readline(prompt ="Enter your name:") 
+age<-as.integer(readline(prompt="Enter your age:")) 
+a<- paste("Hai,",name," next year you will be ",age+1," years old") 
+print(a) 
+output: 
+[1] 3 6 9 12 
+[1] 1 2 3 4 
+[1] 2 8 18 32 
+[1] 2 2 2 2 
+[1] "numeric" 
+[1] "double" 
+[1] "character" 
+[1] "numeric" 
+[1] "double" 
+[1] "logical" 
+[1] "complex" 
+[1] Hello, World! 
+[1] Area of rectangle: 192 
+Enter your name:jack 
+Enter your age:17 
+[1] "Hai, jack next year you will be 18 years old" 
+DATA STRUCTURES IN R 
+SET2: 
+#add,sub in matrix 
+A<-matrix(c(1, 2, 3, 4),nrow=2,byrow=FALSE) 
+B<-matrix(c(5, 6, 7, 8),nrow=2,byrow=TRUE) 
+C<-A+B 
+print(C) 
+D<-A-B 
+print(D) 
+# 
+mat1<-matrix(1:4,nrow=2,byrow=TRUE) 
+mat2<-matrix(c(5,6,7,8),nrow=2,byrow=FALSE) 
+mat1%*%mat2 
+# 
+t(mat1) 
+# 
+cbind(mat1, mat2) 
+rbind(mat1, mat2) 
+# 
+mat<-matrix(1:6,nrow=2,byrow=TRUE) 
+rownames(mat)<-c("r1","r2") 
+colnames(mat)<-c("c1","c2","c3") 
+mat 
+# 
+as.data.frame(mat) 
+# 
+arr<-array(1:6,c(2,3)) 
+arr[1,2]<-10 
+arr 
+# 
+apply(arr,2,sum) 
+# 
+f<- factor(c("apple", "banana", "apple", "banana", "banana")) 
+f 
+# 
+df <- data.frame(Name=c("Je", "Ja", "Ji"),Age=c(25, 30, 35),GPA=c(3.5, 3.8, 4.0)) 
+str(df) 
+# 
+setClass("Person",representation(Name="character",Age="numeric")) 
+p<-new("Person",Name="John",Age=25) 
+p 
+# 
+setClass("Person", representation(Name = "character", Age = "numeric"),prototype(Name = "", Age = 0)) 
+p <- new("Person", Name = "John", Age = 25) 
+p 
+# 
+students<-setRefClass("students", fields=list(Name="character",Age="numeric",GPA="numeric")) 
+s<-students$new(Name="John", Age = 25, GPA = 3.5) 
+s$Name 
+s$Age 
+s$GPA 
+s$Name<-"Paul" 
+s$Name 
+output: 
+ [,1] [,2] 
+[1,] 19 22 
+[2,] 43 50 
+# 
+ [,1] [,2] [,3] [,4] 
+[1,] 1 2 5 6 
+[2,] 3 4 7 8 
+ [,1] [,2] 
+[1,] 1 2 
+[2,] 3 4 
+[3,] 5 6 
+[4,] 7 8 
+# 
+ col1 col2 col3 
+row1 1 3 5 
+row2 2 4 6 
+> as.data.frame(mat) 
+ col1 col2 col3 
+1 1 3 5 
+2 2 4 6 
+# 
+ [,1] [,2] [,3] 
+[1,] 1 10 3 
+[2,] 4 5 6 
+# 
+[1] 5 15 24 
+# 
+[1] apple banana apple banana banana 
+Levels: apple banana 
+> table(f) 
+f 
+apple banana 
+ 2 3 
+# 
+'Data.Frame': 3 obs. of 3 variables: 
+ $ Name: Factor w/ 3 levels "Jane","Jim","John": 3 1 2 
+ $ Age : num 25 30 35 
+ $ GPA : num 3.5 3.8 4 
+# 
+An object of class "Person" 
+Slot "Name": 
+[1] "John" 
+Slot "Age": 
+[1] 25 
+# 
+An object of class "Person" 
+Name: John 
+Age : 25 
+# 
+[1] "John" 
+[1] 25 
+[1] 3.5 
+[1] "Paul" 
+WORKING WITH LOOPING & FUNCTION IN R 
+SET3: 
+is_prime <- function(n) 
+{ 
+ if (n <= 1) 
+ { 
+ return(FALSE) 
+ } 
+ for (i in 2:(n-1)) 
+ { 
+ if (n %% i == 0) 
+ { 
+ return(FALSE) 
+ } 
+ } 
+ return(TRUE) 
+} 
+n <- as.integer(readline(prompt="Enter a number: ")) 
+if(is_prime(n)) 
+{ 
+ print(paste(n,"is a prime number")) 
+} 
+else 
+{ 
+ print(paste(n,"is not a prime number")) 
+} 
+# 
+n <- as.integer(readline(prompt="Enter a number: ")) 
+if (n > 0) 
+{ 
+ print(paste(n, "is a positive number")) 
+} 
+else if (n < 0) { 
+ print(paste(n, "is a negative number")) 
+} 
+else { 
+ print(paste(n, "is zero")) 
+} 
+# 
+is_armstrong <- function(n) { 
+ num_digits <- nchar(as.character(n)) 
+ sum <- 0 
+ temp <- n 
+ while (temp > 0) 
+ { 
+ digit <- temp %% 10 
+ sum <- sum + digit^num_digits 
+ temp <- floor(temp / 10) 
+ } 
+ return(sum == n) 
+} 
+n <- as.integer(readline(prompt="Enter a number: ")) 
+if (is_armstrong(n)) 
+{ 
+ print(paste(n, "is an Armstrong number")) 
+} else { 
+ print(paste(n, "is not an Armstrong number")) 
+} 
+# 
+n <- 5 
+for (i in 1:n) { 
+ print(i) 
+} 
+# 
+calculator <- function(num1, num2, operator = "+") { 
+ if (operator == "+") { 
+ return(num1 + num2) 
+ } else if (operator == "-") { 
+ return(num1 - num2) 
+ } else if (operator == "*") { 
+ return(num1 * num2) 
+ } else if (operator == "/") { 
+ return(num1 / num2) 
+ } else { 
+ return("Invalid operator") 
+ } 
+} 
+num1 <- as.numeric(readline(prompt="Enter first number: ")) 
+num2 <- as.numeric(readline(prompt="Enter second number: ")) 
+operator <- readline(prompt="Enter operator (+, -, *, /): ") 
+result <- calculator(num1, num2, operator) 
+print(result) 
+# 
+z <- complex(real = 3, imaginary = 4) 
+print(z) 
+# 
+multiply_numbers <- function(a, b=NULL) { 
+ if (is.null(b)) b <- 1 
+ a * b 
+} 
+# 
+vector <- c(1, 2, 3, 4, 5) 
+sum_vector <- sum(vector) 
+mean_vector <- mean(vector) 
+product_vector <- prod(vector) 
+# 
+vector <- c(3, 2, 5, 1, 4) 
+sorted_vector <- sort(vector) 
+index_vector <- order(vector) 
+# 
+lcm <- function(a, b) { 
+ if (a == 0) return(b) 
+ if (b == 0) return(a) 
+ a_ <- a 
+ b_ <- b 
+ while (b_ != 0) { 
+ t <- b_ 
+ b_ <- a_ %% b_ 
+ a_ <- t 
+ } 
+ a * b / a_ 
+} 
+output: 
+[1] 13 is prime number 
+# 
+[1] 1 is positive number 
+# 
+[1] 153 is armstrong number 
+# 
+[1] 1 
+[2] 2 
+[3] 3 
+[4] 4 
+[5] 5 
+# 
+Enter first number: 1 
+Enter second number: 2 
+Enter operator (+, -, *, /):+ 
+[1]3 
+# 
+3+4i 
+# 
+> multiply_numbers(3) 
+[1] 3 
+> multiply_numbers(3, 4) 
+[1] 12 
+# 
+> sum_vector 
+[1] 15 
+> mean_vector 
+[1] 3 
+> product_vector 
+[1] 120 
+# 
+> sorted_vector 
+[1] 1 2 3 4 5 
+> index_vector 
+[1] 4 1 2 5 3 
+# 
+> lcm(12, 20) 
+[1] 60 
+> lcm(7, 9) 
+[1] 63 
+IMPLEMENTATION OF VECTOR RECYCLING,APPLY FAMILY & RECURSION 
+SET 4: 
+1. 
+a <- c(1, 2, 3) 
+b <- c(10, 20) 
+a + b 
+output: 
+[1] 11 22 13 
+2. 
+mat <- matrix(1:12, nrow = 3, ncol = 4) 
+apply(mat, 1, sum) 
+ 
+output: 
+[1] 22 26 30 
+3. 
+list_a <- list(c(1, 2, 3), c(4, 5, 6), c(7, 8, 9)) 
+lapply(list_a, sum) 
+output: 
+[[1]] 
+[1] 6 
+[[2]] 
+[1] 15 
+[[3]] 
+[1] 24 
+4. 
+list_a <- list(c(1, 2, 3), c(4, 5, 6), c(7, 8, 9)) 
+sapply(list_a, sum) 
+output: 
+[1] 6 15 24 
+5. 
+vec_a <- c(1, 2, 3, 4, 5, 6, 7, 8, 9) 
+tapply(vec_a, rep(1:3, each = 3), sum) 
+output: 
+1 2 3 
+ 6 15 24 
+6. 
+mapply(rep, 1:3, 4:6) 
+output: 
+[[1]] 
+[1] 1 1 1 1 
+[[2]] 
+[1] 2 2 2 2 2 
+[[3]] 
+[1] 3 3 3 3 3 3 
+7. 
+sum_of_numbers <- function(n) { 
+ if (n == 1) { 
+ return (1) 
+ } else { 
+ return (n + sum_of_numbers(n - 1)) 
+ } 
+} 
+sum_of_numbers(10) 
+output: 
+[1] 55 
+8. 
+fibonacci <- function(n) 
+{ 
+ if (n <= 1) { 
+ return(n) 
+ } else { 
+ return(fibonacci(n-1) + fibonacci(n-2)) 
+ } 
+} 
+result <- sapply(0:9, fibonacci) 
+print(result) 
+output: 
+[1] 0 1 1 2 3 5 8 13 21 34 
+9. 
+factorial<-function(n) 
+{ 
+ if (n <= 1) 
+ { 
+ return(1) 
+ } else { 
+ return(n * factorial(n-1)) 
+ } 
+} 
+result<-factorial(5) 
+print(result) 
+output: 
+[1] 120
